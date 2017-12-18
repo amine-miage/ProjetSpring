@@ -43,6 +43,12 @@ public class UserMetier {
     public User saveUser(User u) {
         return userRepository.save(u);
     }
+    
+    public void Desactiver(User u){
+    	User user = userRepository.findById(u.getId());
+    	user.setActive(false);
+    	userRepository.save(user);
+	}
 
     public User findUser(String mail, String password){
         if(mail != null && password!= null) return userRepository.findByMailAndPassword(mail,password);

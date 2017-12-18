@@ -33,6 +33,11 @@ public class Media implements Serializable{
     private int id;
     private String name;
     
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    
     @Basic(fetch = FetchType.LAZY)
     @Column(name="description", length=10000)
     private String description;
@@ -124,7 +129,13 @@ public class Media implements Serializable{
         this.categorie = categorie;
     }
 
-    
+    @JsonSerialize(using = GetMediaUser.class)
+    public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
@@ -135,6 +146,27 @@ public class Media implements Serializable{
 
 	
 
+}
+
+@Component
+class GetMediaUser extends JsonSerializer<User> {
+    
+	@Override
+    public void serialize(User user, JsonGenerator gen, SerializerProvider serializers) throws IOException, JsonProcessingException {
+
+
+        gen.writeStartObject();
+            gen.writeNumberField("id",user.getId());
+            gen.writeStringField("name",user.getName());
+            gen.writeStringField("prenom",user.getPrenom());
+            gen.writeStringField("mail",user.getMail());
+            gen.writeStringField("abonement",user.getAbonement());
+            gen.writeBooleanField("active",user.getActive());
+            gen.writeObjectField("role",user.getRole());
+        gen.writeEndObject();
+
+
+    }
 }
 
 

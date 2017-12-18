@@ -40,6 +40,9 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Collection<Demande> demandes;
     
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Collection<Media> Medias;
+    
     public User() { 
     	
     }
@@ -125,6 +128,16 @@ public class User implements Serializable {
     public Collection<Demande> getDemandes() {
 		return demandes;
 	}
+	
+	
+	@JsonSerialize(using=GetMedias.class)
+    public Collection<Media> getMedias() {
+		return Medias;
+	}
+	
+	public void setMedias(Collection<Media> Medias) {
+		this.Medias = Medias;
+	}
 	public void setDemandes(Collection<Demande> demandes) {
 		this.demandes = demandes;
 	}
@@ -194,3 +207,24 @@ class GetDemandes extends JsonSerializer<List<Demande>> {
     }
 }
 
+@Component
+class GetMedias extends JsonSerializer<List<Media>> {
+    @Override
+    public void serialize(List<Media> Medias, JsonGenerator gen, SerializerProvider serializers) throws IOException, JsonProcessingException {
+
+        gen.writeStartArray();
+        for (Media media : Medias) {
+            gen.writeStartObject();
+	            gen.writeNumberField("id",media.getId());
+	            gen.writeStringField("nom",media.getName());
+	            gen.writeStringField("Description",media.getDescription());
+	            gen.writeStringField("Type",media.getType());
+	            gen.writeNumberField("size", media.getSize());
+	            
+	            
+            gen.writeEndObject();
+        }
+        gen.writeEndArray();
+
+    }
+}

@@ -47,9 +47,5 @@ public class DemandeMetier{
 		dr.delete(M);	
 	}
 	
-	public void Desabonement(User u){
-		dmr.delete(this.getDemande());
-		ur.delete(u);
-	}
 	
 }

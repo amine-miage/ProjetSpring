@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.dao.UserRepository;
@@ -15,6 +16,7 @@ import com.example.entity.User;
 
 @EntityScan("com.example.entity")
 @EnableJpaRepositories("com.example.dao")
+@ComponentScan("com.example.service")
 @SpringBootApplication
 public class MediatequeApplication {
 

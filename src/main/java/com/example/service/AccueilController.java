@@ -11,4 +11,10 @@ public class AccueilController {
         
         return "accueil";
     }
+    
+    @RequestMapping("/login")
+    public String login() {
+        
+        return "login";
+    }
 }

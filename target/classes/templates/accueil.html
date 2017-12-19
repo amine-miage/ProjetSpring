@@ -1,42 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Mediatheque UHA </title>
+<title> Médiathèque UHA </title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
-<link rel="stylesheet" th:href="@{/css/style.css}"
+<link rel="stylesheet" th:href="@{/css/styleAccueil.css}"
 	href="../../css/style.css" />
 
 </head>
-<body>
+<body class="body">
 
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Spring Boot</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">Médiathèque</h3>
 
-	<div class="container">
+          <ul class="nav masthead-nav">
+           
 
-		<div class="starter-template">
-			<h1>Spring Boot Web Thymeleaf Example</h1>
-			<h2>
-				<span th:text="hello"></span>
-			</h2>
-		</div>
+            <li>
+              <a href="#">Accueil</a>
+            </li>
 
-	</div>
-	<!-- /.container -->
+            <li>
+              <a th:href="@{/login}">Connexion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-	
+      <div class="inner cover">
+        <h1 class="cover-heading">Bienvenue dans la médiathèque de l'UHA</h1>
+
+        <p class="lead"> Vous pouvez consulter les vidéos, les audios et les livres préférés en quelques clics  .
+            
+      
+            
+        </p>
+
+
+        <p class="lead"><a class="btn btn-default btn-lg"  th:href="@{/login}" >Connexion</a></p>
+      </div>
+
+      <div class="mastfoot">
+        <div class="inner">
+
+          
+          <p><small>HAIMI Zakaria et HAMDOUNI Amine</small></p>          
+      
+          
+
+          <p>2017-2018</p>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
 </body>
 </html>

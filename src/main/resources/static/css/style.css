@@ -1,7 +1,34 @@
-h1{
-	color:#0000FF;
+body
+{
+    background-color: #BDBDBD;
+}
+.navbar-nav{
+margin-left: 57%;
 }
 
-h2{
-	color:#FF0000;
+.div {
+	margin-top : 15%
 }
+.btn-primary {
+	background-color : #151515;
+	color : white;
+	border-color : black;
+	
+	
+}
+
+
+.white {
+	color:white
+}
+.input-group-addon
+{
+    background-color: #151515;
+    border-color: #151515;
+    color: #151515;
+}
+.form-control:focus
+{
+  
+}
+.form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }

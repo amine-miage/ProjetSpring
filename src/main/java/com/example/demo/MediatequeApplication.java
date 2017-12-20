@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import java.io.File;
+
+
 import java.util.Date;
 
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.example.dao.UserRepository;
 import com.example.entity.User;
 
+@ComponentScan("com.example.metier")
 @EntityScan("com.example.entity")
 @EnableJpaRepositories("com.example.dao")
 @ComponentScan("com.example.service")

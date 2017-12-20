@@ -28,17 +28,17 @@ public class User implements Serializable {
 
     @Id @GeneratedValue
     private int id;
-    @NotEmpty
+    
     @Size(min=2, max=20)
     private String name;
-    @NotEmpty
+    
     @Size(min=2)
     private String prenom;
     @NotEmpty
     @Email
     private String mail;
     @NotEmpty
-    @Size(min=6 , message ="erreur, 6 caractères minimum ")
+    @Size(min=5 , message ="erreur, 5 caractères minimum ")
     private String password;
     private Boolean active;
     private String role;

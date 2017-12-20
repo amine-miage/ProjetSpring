@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title> Login </title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -35,24 +35,24 @@
                 <div class="panel-body">
                     <h5 class="text-center">
                        CONNECTEZ-VOUS </h5>
-                    <form class="form form-signup" role="form" action="#" th:action="@{/accueil}" method="post">
+                    <form class="form form-signup" role="form"  th:action="@{loginuser}" th:object="${user}" method="post">
                  
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope white"></span>
                             </span>
-                            <input type="text" class="form-control" placeholder="Email Address" />
+                            <input type="text" class="form-control" th:field="*{mail}" placeholder="Email Address" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-ruble white"></span></span>
-                            <input type="password" class="form-control" placeholder="Password" />
+                            <input type="password" th:field="*{password}" class="form-control" placeholder="Password" />
                         </div>
                     </div>
                     <input  class="btn btn-sm btn-primary btn-block" role="button" type="submit" value="ENVOYEZ" />
                     <p></p>
-                	<p><a  th:href="@{/inscription}" >Pas de compte? inscrivez-vous !</a></p>
+                	<p><a  th:href="@{accueil/inscription}" >Pas de compte? inscrivez-vous !</a></p>
                
                    </form>
             </div>

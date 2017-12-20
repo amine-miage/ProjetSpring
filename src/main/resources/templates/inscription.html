@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset= "utf-8"/>
+<title>Page d`inscription</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../css/style.css" />
+</head>
+<body class="body">
+
+ 
+    
+    	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Médiathèque</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Connexion</a></li>
+					<li><a th:href="@{/accueil}">Accueil</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<div class="container">
+	<div class="row">
+	<!-- /.container -->
+        <div class="div col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5 class="text-center">
+                       S'INSCRIRE </h5>
+                    <form class="form form-signup" role="form" th:object="${user}" th:action="@{inscriptionUser}" method="post">
+               <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-menu-right white"></span>
+                            </span>
+                            <input type="text" th:field="*{name}" class="form-control" placeholder="Nom" />
+                       		<span class="text-danger" th:errors="*{name}"></span>
+                        </div>
+                    </div>
+                <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-king white"></span>
+                            </span>
+                            <input type="text" class="form-control" th:field="*{prenom}" placeholder="Prenom" />
+                        	<span class="text-danger" th:errors="*{prenom}"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope white"></span>
+                            </span>
+                            <input type="text" class="form-control" th:field="*{mail}" placeholder="Email Address" />
+                      		<span class="text-danger" th:errors="*{mail}"></span> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-ruble white"></span></span>
+                            <input type="password" class="form-control" th:field="*{password}" placeholder="Password" />
+                        <span class="text-danger" th:errors="*{password}"></span>
+                        </div>
+                    </div>
+                      <div class="control-group">
+  <label class="control-label">Type d`abonnement</label>
+   <select th:field ="*{abonement}">
+                <option th:value="Mensuel">Mensuel</option>
+                <option th:value="Annuel">Annuel</option>
+            </select>
+            </div>
+   
+                    <input  class="btn btn-sm btn-primary btn-block" role="button" type="submit" value="ENREGISTRER" />
+                    <p></p>
+
+
+</form>
+</div>
+        </div>
+    </div>
+</div>
+</div> 
+</body>
+
+</html>

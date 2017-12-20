@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -24,7 +25,7 @@ public class AdminController {
 	
 	@Autowired
 	UserRepository ur;
-	
+	@Secured(value= {"ROLE_ADMIN"})
 	@RequestMapping(value="/gestionEmploye",method=RequestMethod.GET)
 	public String gererEmployer(Model model ,
 			@RequestParam(name="motCle" , defaultValue="" )String mc){
@@ -33,7 +34,7 @@ public class AdminController {
 		model.addAttribute("users",users);
 		return "gestionEmploye";
 	}
-	
+	@Secured(value= {"ROLE_ADMIN"})
 	@RequestMapping(value="/formAdmin",method=RequestMethod.GET)
 	public String formAdmin(Model model ,
 			@RequestParam(name="motCle" , defaultValue="" )String mc){
@@ -44,6 +45,7 @@ public class AdminController {
 		
 		return "formAdmin";
 	}
+	@Secured(value= {"ROLE_ADMIN"})
 	@RequestMapping(value="/edit",method=RequestMethod.GET)
 	public String edit(Model model , @RequestParam(value="userId")int id){
 		User  u = ur.findById(id);
@@ -52,6 +54,7 @@ public class AdminController {
 		
 		return "EditForm";
 	}
+	@Secured(value= {"ROLE_ADMIN"})
 	@RequestMapping(value="/SaveEmploye",method=RequestMethod.POST)
 	public String saveEmploye(@Valid User empl , BindingResult br, Model model){
 	
@@ -69,7 +72,7 @@ public class AdminController {
 		
 		return "redirect:/Admin/gestionEmploye";
 	}
-	
+	@Secured(value= {"ROLE_ADMIN"})
 	@Transactional
 	@RequestMapping(value="/DeleteEmploye", method=RequestMethod.GET)
 	public String deleteEmploye(@RequestParam(value="userId") int id){

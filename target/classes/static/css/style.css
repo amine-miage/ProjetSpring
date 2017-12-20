@@ -1,11 +1,14 @@
-body
+.body
 {
     background-color: #BDBDBD;
 }
 .navbar-nav{
 margin-left: 57%;
 }
-
+.a{
+	color:white;
+	font-family: "Times New Roman";
+}
 .div {
 	margin-top : 15%
 }

@@ -9,7 +9,10 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
@@ -25,9 +28,17 @@ public class User implements Serializable {
 
     @Id @GeneratedValue
     private int id;
+    @NotEmpty
+    @Size(min=2, max=20)
     private String name;
+    @NotEmpty
+    @Size(min=2)
     private String prenom;
+    @NotEmpty
+    @Email
     private String mail;
+    @NotEmpty
+    @Size(min=6 , message ="erreur, 6 caractères minimum ")
     private String password;
     private Boolean active;
     private String role;

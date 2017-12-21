@@ -20,6 +20,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     
     void deleteById( int id);
     @Query("select u from User u where u.name like :x AND u.role='Employe'")
-    List<User> chercher(@Param("x") String mc);
+    List<User> chercherEmploye(@Param("x") String mc);
+    
+    @Query("select u from User u where u.name like :x AND u.role='Client'")
+    List<User> chercherClient(@Param("x") String mc);
 
 }

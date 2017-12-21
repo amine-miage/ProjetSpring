@@ -80,5 +80,5 @@ public class AdminController {
 		ur.deleteById(id);
 		
 		return "redirect:/Admin/gestionEmploye";
-	}	
+	}
 }

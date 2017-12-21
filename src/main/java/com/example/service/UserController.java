@@ -46,7 +46,7 @@ public class UserController {
 
 	@RequestMapping(value = "/inscriptionUser", method = RequestMethod.POST)
 	public String SaveUser(User s) {
-		s.setRole("client");
+		s.setRole("CLIENT");
 		s.setActive(false);
 		s.setExpirer(false);
 		ur.save(s);

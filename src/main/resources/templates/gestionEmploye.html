@@ -53,8 +53,8 @@
 	<td th:text="${empl.dateDebut}"></td>
 	<td th:text="${empl.mail}"></td>
 	
-	<td ><a th:href="@{/Admin/edit(userId=${empl.id})}"><span class="glyphicon glyphicon-pencil "></span></a></td>
-	<td><a th:href="@{/Admin/DeleteEmploye(userId=${empl.id})}"><span class="glyphicon glyphicon-trash "></span></a></td>
+	<td ><a th:href="@{/edit(userId=${empl.id})}"><span class="glyphicon glyphicon-pencil "></span></a></td>
+	<td><a th:href="@{/DeleteEmploye(userId=${empl.id})}"><span class="glyphicon glyphicon-trash "></span></a></td>
 	</tr>
 	</tbody>
 </table>

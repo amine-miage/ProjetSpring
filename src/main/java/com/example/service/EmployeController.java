@@ -20,7 +20,7 @@ import com.example.dao.UserRepository;
 import com.example.entity.User;
 
 @Controller
-@RequestMapping(value="/Employe")
+
 public class EmployeController{
 
 	
@@ -38,7 +38,7 @@ public class EmployeController{
 	
 
 
-	@RequestMapping(value="/edit",method=RequestMethod.GET)
+	@RequestMapping(value="/editerClient",method=RequestMethod.GET)
 	public String edit(Model model , @RequestParam(value="userId")int id){
 		User  u = ur.findById(id);
 		
@@ -53,7 +53,7 @@ public class EmployeController{
 		//s.setActive(false);
 		s.setExpirer(false);
 		ur.save(s);
-		return "redirect:/Employe/gestionClient";
+		return "redirect:/gestionClient";
 	}
 
 	@Transactional
@@ -62,6 +62,6 @@ public class EmployeController{
 	
 		ur.deleteById(id);
 		
-		return "redirect:/Employe/gestionClient";
+		return "redirect:/gestionClient";
 	}	
 }

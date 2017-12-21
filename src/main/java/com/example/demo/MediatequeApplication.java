@@ -38,7 +38,7 @@ public class MediatequeApplication {
 
 	                if(ur.findByMailAndPassword("admin@admin.com","admin") == null){
 	                    User user= new User("admin","admin", "admin@admin.com","admin","illimite");
-	                    user.setRole("admin");
+	                    user.setRole("ADMIN");
 	                    user.setExpirer(false);
 	                    user.setDateDebut(new Date());
 	                    ur.save(user);

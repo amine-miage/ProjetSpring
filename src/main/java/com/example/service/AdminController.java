@@ -3,10 +3,13 @@ package com.example.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -19,7 +22,7 @@ import com.example.dao.UserRepository;
 import com.example.entity.User;
 
 @Controller
-@RequestMapping(value="/Admin")
+//@RequestMapping(value="/Admin")
 public class AdminController {
 
 	
@@ -29,7 +32,6 @@ public class AdminController {
 	@RequestMapping(value="/gestionEmploye",method=RequestMethod.GET)
 	public String gererEmployer(Model model ,
 			@RequestParam(name="motCle" , defaultValue="" )String mc){
-		
 		List<User> users = ur.chercherEmploye("%"+mc+"%");
 		model.addAttribute("users",users);
 		return "gestionEmploye";
@@ -56,21 +58,26 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/SaveEmploye",method=RequestMethod.POST)
-	public String saveEmploye(@Valid User empl , BindingResult br, Model model){
+	public String saveEmploye(@Valid User empl , BindingResult br, Model model , @RequestParam(name="motCle" , defaultValue="" )String mc){
+		
+		
 	
 		
 		//formulaire
 		if ( br.hasErrors()){
-		return "formAdmin";
+			List<User> users = ur.chercherEmploye("%"+mc+"%");
+			model.addAttribute("users",users);
+			
+			return "formAdmin";
 	}
-		empl.setRole("Employe");
+		empl.setRole("EMPLOYE");
 		empl.setActive(true);
 		empl.setExpirer(false);
 		empl.setDateDebut(new Date());
 		empl.setAbonement("illimite");
 		ur.save(empl);
 		
-		return "redirect:/Admin/gestionEmploye";
+		return "redirect:/gestionEmploye";
 	}
 	
 	@Transactional
@@ -79,6 +86,6 @@ public class AdminController {
 	
 		ur.deleteById(id);
 		
-		return "redirect:/Admin/gestionEmploye";
+		return "redirect:/gestionEmploye";
 	}	
 }

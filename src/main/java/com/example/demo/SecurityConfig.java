@@ -23,7 +23,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
     	auth.jdbcAuthentication()
     	    .dataSource(datasource)
     	    .usersByUsernameQuery("select mail as principal, password as credentials,true from user  where mail = ? AND active ='1' ")
-    	    .authoritiesByUsernameQuery("select mail as principal ,role as role  from user where mail = ?");
+    	    .authoritiesByUsernameQuery("select mail as principal ,role as role  from user where mail = ?")
+    	    .rolePrefix("ROLE_");
     	    
 	}
 	
@@ -36,15 +37,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
                  "/",
                  "/js/**",
                  "/css/**",
-                 "/img/**","/accueil",
-                 "/webjars/**").permitAll()
+                 "/img/**",
+                 "/webjars/**","/accueil").permitAll()
 	                 .anyRequest()
 	                     .authenticated()
 	                        .and()
 	            .formLogin()
 	                  .loginPage("/login")
 	                  .permitAll()
-	                  .defaultSuccessUrl("/accueil")
+	                  .defaultSuccessUrl("/authentification")
 	                  .failureUrl("/error")
 	                   .and() 
 	             . logout()

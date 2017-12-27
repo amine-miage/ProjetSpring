@@ -48,7 +48,9 @@ public class EmployeController{
 	}
 	
 	@RequestMapping(value = "/EditClient", method = RequestMethod.POST)
-	public String SaveUser(User s) {
+	public String SaveUser(User s , BindingResult br )
+	{
+	
 		s.setRole("client");
 		//s.setActive(false);
 		s.setExpirer(false);

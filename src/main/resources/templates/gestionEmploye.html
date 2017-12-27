@@ -22,9 +22,11 @@
 				<a class="navbar-brand" href="#">Médiathèque</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Connexion</a></li>
-					<li><a th:href="@{/accueil}">Accueil</a></li>
+				
+				<ul class="nav navbar-nav navbar-right ">
+					
+					<li ><a   th:href="@{/accueil}"><strong>Accueil</strong></a></li>
+					<li> <a th:href="@{/logout}"><strong>Deconnexion</strong></a> </li>
 				</ul>
 			</div>
 		</div>
@@ -38,7 +40,10 @@
 <input type="text" name="motCle"/>
  <input  class="btn btn-sm btn-primary" role="button" type="submit" value="Chercher" />
 </form>
-<h4><a class="a" th:href="@{formAdmin}" >Ajouter un nouveau employé</a></h4>
+<br/>
+<br/>
+<br/>
+<h4 >Ajouter un Employe      <a  th:href="@{formAdmin}" ><img th:src="@{/img/Add-icon.png}" width="30" height="30"/></a></h4>
 <table class="table table-striped table-bordered">
 	<thead>
 	<tr>

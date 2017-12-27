@@ -2,13 +2,28 @@
 {
     background-color: #BDBDBD;
 }
-.navbar-nav{
-margin-left: 57%;
+.imgEmp h4{
+	margin-left:9%
+}
+.imgmedia{
+	margin-left:70%;
+	margin-top:-29%
+}
+.media{
+	margin-left:7%
+}
+.client{
+	margin-left:6%
+}
+.imgEmp{
+	margin-left:35%
 }
 .a{
 	color:white;
 	font-family: "Times New Roman";
 }
+
+
 .div {
 	margin-top : 15%
 }

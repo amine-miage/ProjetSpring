@@ -51,7 +51,7 @@ public class AccueilController {
    	    	  return "EmployePage";
    	      }      
      }
-   	      return "accueil";
+   	      return "ClientPage";
 
 }
 	

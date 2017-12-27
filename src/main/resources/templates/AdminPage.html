@@ -23,19 +23,28 @@
 				<a class="navbar-brand" href="#">Médiathèque</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Connexion</a></li>
-					<li><a th:href="@{/accueil}">Accueil</a></li>
+				<ul class="nav navbar-nav navbar-right ">
+					
+					<li ><a   th:href="@{/accueil}"><strong>Accueil</strong></a></li>
+					<li> <a th:href="@{/logout}"><strong>Deconnexion</strong></a> </li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 <!-- affichage liste des employes -->
-<h1>Bonjour Mr l'administrateur !</h1>
+
 
 <div class="container">
+<h2>Partie Administration</h2>
+<div class="imgEmp">
+<h4><strong>GESTION EMPLOYES</strong></h4>
 
-<h4><a class="a" th:href="@{gestionEmploye}" >gestion Employe</a></h4>
+
+
+<a class="a" th:href="@{gestionEmploye}" ><img th:src="@{/img/travailleurs.jpg}" width="300" height="300"/></a>
 </div>
+
+</div>
+
 </body>
 </html>

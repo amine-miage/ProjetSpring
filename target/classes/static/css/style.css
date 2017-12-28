@@ -2,6 +2,12 @@
 {
     background-color: #BDBDBD;
 }
+.footer {
+    color: #887;
+    background-color: #eee;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
 .imgEmp h4{
 	margin-left:9%
 }
@@ -50,3 +56,6 @@
   
 }
 .form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
+
+
+

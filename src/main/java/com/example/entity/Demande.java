@@ -27,8 +27,8 @@ import java.io.Serializable;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY,property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value=DemandeDeleteMedia.class, name = "DM"),
-        @JsonSubTypes.Type(value=DemandeInscription.class, name = "DI"),
+        @JsonSubTypes.Type(value=DemandeDeleteMedia.class, name = "EM"),
+        @JsonSubTypes.Type(value=DemandeAbonnement.class, name = "AB"),
 })
 
 public abstract class Demande implements Serializable{

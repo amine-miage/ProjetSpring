@@ -42,6 +42,18 @@ public class DemandeMetier{
 		user.setDateDebut(new Date());
 		ur.save(user);
 	}
+	
+	public void abonnement(User u) {
+		dmr.delete(this.getDemande());
+		User user = ur.findById(u.getId());
+		user.setActive(true);
+		ur.save(user);
+	}
+	
+	
+	public void Emprunt(User u) {
+		
+	}
 	public void deleteMedia(Media M){
 		dmr.delete(this.getDemande());
 		dr.delete(M);	

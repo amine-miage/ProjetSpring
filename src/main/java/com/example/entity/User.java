@@ -34,10 +34,10 @@ public class User implements Serializable {
     
     @Size(min=2)
     private String prenom;
-    @NotEmpty
+   // @NotEmpty
     @Email
     private String mail;
-    @NotEmpty
+    //@NotEmpty
     @Size(min=5 , message ="erreur, 5 caractères minimum ")
     private String password;
     private Boolean active;

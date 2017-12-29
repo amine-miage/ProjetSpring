@@ -3,9 +3,11 @@ package com.example.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entity.User;
 
@@ -24,5 +26,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     
     @Query("select u from User u where u.name like :x AND u.role='Client'")
     List<User> chercherClient(@Param("x") String mc);
+    
+    @Transactional
+    @Modifying
+    @Query("update User u set u.abonement = :x")
+    void updateByAbonnement(@Param("x") String abonnement);
 
 }

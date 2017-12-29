@@ -57,7 +57,24 @@ public class EmployeController{
 		ur.save(s);
 		return "redirect:/gestionClient";
 	}
-
+	@RequestMapping(value="/abonnerClient",method=RequestMethod.GET)
+	public String abonnement(Model model , @RequestParam(value="userId")int id){
+		User  u = ur.findById(id);
+		
+		model.addAttribute("u",u);
+		
+		return "abonnement";
+	}
+	@RequestMapping(value = "/abonnementClient", method = RequestMethod.POST)
+	public String abonnementUser(User s , BindingResult br )
+	{
+	
+		
+		//s.setActive(false);
+		
+		ur.updateByAbonnement(s.getAbonement());
+		return "redirect:/gestionClient";
+	}
 	@Transactional
 	@RequestMapping(value="/DeleteClient", method=RequestMethod.GET)
 	public String deleteClient(@RequestParam(value="userId") int id){

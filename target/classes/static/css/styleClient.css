@@ -7,7 +7,9 @@ background-color: #428bca;
 .nav-pills>li>a {
 border-radius: 0px;
 }
-
+.divAbo{
+	margin-top:20%
+}
 a {
 color: #000;
 text-decoration: none;

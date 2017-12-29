@@ -27,12 +27,16 @@ import java.io.Serializable;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY,property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value=DemandeDeleteMedia.class, name = "EM"),
+        @JsonSubTypes.Type(value=DemandeEmprunt.class, name = "EM"),
         @JsonSubTypes.Type(value=DemandeAbonnement.class, name = "AB"),
 })
 
 public abstract class Demande implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2945155362509288446L;
 	@Id @GeneratedValue
     private int id;
     private String status;

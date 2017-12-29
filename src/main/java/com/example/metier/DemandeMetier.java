@@ -1,6 +1,7 @@
 package com.example.metier;
 
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -47,12 +48,19 @@ public class DemandeMetier{
 		dmr.delete(this.getDemande());
 		User user = ur.findById(u.getId());
 		user.setActive(true);
+		user.setAbonement("annuel");
 		ur.save(user);
 	}
 	
 	
-	public void Emprunt(User u) {
-		
+	public void Emprunt(User u,int IdMedia) {
+		dmr.delete(this.getDemande());
+		User user = ur.findById(u.getId());
+	    Media M = (Media) dr.findById(IdMedia);
+	    Collection<Media> m = user.getMedias();
+	    m.add(M);
+	    ur.save(user);
+	    
 	}
 	public void deleteMedia(Media M){
 		dmr.delete(this.getDemande());

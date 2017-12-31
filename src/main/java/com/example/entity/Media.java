@@ -45,11 +45,12 @@ public class Media implements Serializable{
     private String type;
     private long size;
     
+    private String photo;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    @OneToMany(orphanRemoval=true,mappedBy = "media")
+    @OneToMany(orphanRemoval=true,mappedBy = "media") 
     private Set<Tag> tags;
 
     
@@ -69,7 +70,15 @@ public class Media implements Serializable{
         
     }
 
-    public int getId() {
+    public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public int getId() {
         return id;
     }
     public void setId(int id) {

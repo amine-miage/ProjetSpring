@@ -9,19 +9,26 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.dao.MediaRepository;
+import com.example.entity.Media;
 import com.example.entity.User;
 
 @Controller
 public class AccueilController {
 
+	@Autowired
+	MediaRepository mr;
+	
     @RequestMapping("/accueil")
     public String accueil() {
         
@@ -36,7 +43,9 @@ public class AccueilController {
     
 	
 	@RequestMapping(value = "/authentification")
-	public String handleRequest(HttpServletRequest httpServletRequest) throws Exception {
+	public String handleRequest(HttpServletRequest httpServletRequest, Model model) throws Exception {
+		List<Media> medias = mr.findAll();
+		model.addAttribute("medias",medias);
 		HttpSession httpSession = httpServletRequest.getSession();
 		SecurityContext securityContext=(SecurityContext) httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
 		String username = securityContext.getAuthentication().getName();

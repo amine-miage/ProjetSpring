@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,7 +16,8 @@ import com.example.entity.User;
 public interface MediaRepository extends JpaRepository<Media, Integer>{
 
     public Set<Media> findByName(String name);
-    public Set<Media> findById(int idMedia);
+    Media findById(int idMedia);
+    void deleteById(int idMedia);
     public Set<Media> findByTagsName(String name);
     public Set<Media> findByTagsNameIn(Collection<String> names);
     public Set<Media> findByTagsIn(Collection<Tag> tags);

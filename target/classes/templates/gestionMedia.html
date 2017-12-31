@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>gestionMedia</title>
+
+
+ <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../css/style.css" />
+	
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+	</head>
+<body class="body">
+
+ 
+    
+    	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Médiathèque</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				
+				<ul class="nav navbar-nav navbar-right ">
+					
+					<li ><a   th:href="@{/accueil}"><strong>Accueil</strong></a></li>
+					<li> <a th:href="@{/logout}"><strong>Deconnexion</strong></a> </li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<!-- affichage liste des employes -->
+<h1>Bonjour Mr l'employe !</h1>
+
+<div class="container">
+
+<br/>
+<br/>
+<br/>
+<h4 >Ajouter un Media      <a  th:href="@{formMedia}" ><img th:src="@{/img/Add-icon.png}" width="30" height="30"/></a></h4>
+<table class="table table-striped table-bordered">
+	<thead>
+	<tr>
+	<th>ID</th> <th>NOM</th> <th>CATEGORIE</th> <th>IMAGE</th> <th>TAG</th> <th>MODIFIER</th> <th>SUPPRIMER</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="media:${medias}">
+	<td th:text="${media.id}"></td>
+	<td th:text="${media.name}"></td>
+	<td th:text="${media.type}"></td>
+	<td><img th:src="@{getPhoto(id=${media.id})}" width="100" height="100"/></td>
+	<td></td>
+	
+	
+	<td ><a th:href="@{/editerMedia(mediaId=${media.id})}"><span class="glyphicon glyphicon-pencil "></span></a></td>
+	<td><a th:href="@{/DeleteMedia(mediaId=${media.id})}"><span class="glyphicon glyphicon-trash "></span></a></td>
+	</tr>
+	</tbody>
+</table>
+</div>
+</body>
+</html>

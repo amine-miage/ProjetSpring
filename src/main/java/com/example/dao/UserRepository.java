@@ -27,6 +27,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from User u where u.name like :x AND u.role='Client'")
     List<User> chercherClient(@Param("x") String mc);
     
+    @Query("select u from User u where u.abonement='NULL' AND u.role='Client'")
+    List<User> chercherClientNonAbo();
+    
     @Transactional
     @Modifying
     @Query("update User u set u.abonement = :x")

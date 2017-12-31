@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>formAdmin</title>
+
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../css/style.css" />
+	</head>
+<body class="body">
+
+ 
+    
+    	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Médiathèque</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right ">
+					
+					<li ><a   th:href="@{/accueil}"><strong>Accueil</strong></a></li>
+					<li> <a th:href="@{/logout}"><strong>Deconnexion</strong></a> </li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<!-- Formulaire d'edit des employes -->
+ <div class="container">
+	<div class="row">
+	<!-- /.container -->
+        <div class="div col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5 class="text-center">
+                       MODIFICATION D'UN MEDIA </h5>
+                    <form class="form form-signup" role="form" th:object="${m}" th:action="@{EditMedia}" method="post">
+            <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-menu-right white"></span>
+                            </span>
+                            <input type="text" th:field="*{id}" class="form-control" placeholder="ID" />
+                       		
+                        </div>
+                    </div>
+               <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-menu-right white"></span>
+                            </span>
+                            <input type="text" th:field="*{name}" class="form-control" placeholder="Nom" />
+                       		<span class="text-danger" th:errors="*{name}"></span>
+                        </div>
+                    </div>
+                <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-king white"></span>
+                            </span>
+                            <input type="text" class="form-control" th:field="*{type}" placeholder="Categorie" />
+                        	<span class="text-danger" th:errors="*{type}"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope white"></span>
+                            </span>
+                            <input type="file" class="form-control" name="picture" placeholder="Photo" />
+                      		<span class="text-danger" th:errors="*{photo}"></span> 
+                        </div>
+                    </div>
+                    <input  class="btn btn-sm btn-primary btn-block" role="button" type="submit" value="MODIFIER" />
+                    <p></p>
+                	
+               
+                   </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div> 
+
+</body>
+</html>

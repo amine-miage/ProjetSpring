@@ -22,7 +22,7 @@ public class DemandeEmprunt extends Demande{
 		private int IdMedia;
 
 	    public DemandeEmprunt(int id, String status, String genre, Date dateEmprunt,int IdMedia) {
-	        super(id, status,genre);
+	      //  super(id, status,genre);
 	        this.dateEmprunt = dateEmprunt;
 	        this.IdMedia=IdMedia;
 	    }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
-<title>Gestion des clients</title>
+<title>Gestion des demandes</title>
 
 
  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
@@ -31,38 +31,34 @@
 		</div>
 	</nav>
 <!-- affichage liste des employes -->
-<h1>Gestion des Clients</h1>
+<h1>Gestion des Demandes</h1>
 
 <div class="container">
-<form th:action="@{gestionClient}" method="get">
-<label>Mot Clé :</label>
-<input type="text" name="motCle"/>
- <input  class="btn btn-sm btn-primary" role="button" type="submit" value="Chercher" />
-</form>
+
 <br/>
 <br/>
 <br/>
 <table class="table table-striped table-bordered">
 	<thead>
 	<tr>
-	<th>ID</th> <th>NOM</th> <th>PRENOM</th> <th>DATE DEBUT</th> <th>EMAIL</th> <th>MODIFIER</th> <th>SUPPRIMER</th> <th>ACTIVATION</th>
+	<th>TYPE</th> <th>GENRE</th> <th>STATUT</th> <th>ACCEPTER</th> <th>REFUSER</th> 
 	</tr>
 	</thead>
 	<tbody>
-	<tr th:each="client:${users}">
-	<td th:text="${client.id}"></td>
-	<td th:text="${client.name}"></td>
-	<td th:text="${client.prenom}"></td>
-	<td th:text="${client.dateDebut}"></td>
-	<td th:text="${client.mail}"></td>
+	<tr th:each="dmd:${demandes}">
+	<td th:text="${dmd.cat}"></td>
+	 <td th:text="${dmd.genre}"></td>
+	<td th:text="${dmd.status}"></td>
 	
-	<td ><a th:href="@{/editerClient(userId=${client.id})}"><span class="glyphicon glyphicon-pencil "></span></a></td>
-	<td><a th:href="@{/DeleteClient(userId=${client.id})}"><span class="glyphicon glyphicon-trash "></span></a></td>
-	<td th:text="${client.active}"></td>
+	
+	<td ><a ><span class="glyphicon glyphicon-pencil "></span></a></td>
+	<td><a ><span class="glyphicon glyphicon-trash "></span></a></td>
+	
 	</tr>
 	</tbody>
 </table>
-hhhhh<a th:href="@{/gestionDemande}">kiko</a>
+
+
 
 </div>
 </body>

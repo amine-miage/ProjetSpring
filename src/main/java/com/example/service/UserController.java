@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.dao.DemandeRepository;
 import com.example.dao.UserRepository;
+import com.example.entity.DemandeAbonnement;
 import com.example.entity.User;
 import com.example.metier.UserMetier;
 
@@ -38,6 +40,9 @@ public class UserController {
 	@Autowired
     private UserMetier urr;
 	
+	@Autowired
+    DemandeRepository dr;
+	
 	@RequestMapping(value = "/inscription", method = RequestMethod.GET)
 	public String forminscription(Model model) {
 		model.addAttribute("user", new User());
@@ -50,6 +55,10 @@ public class UserController {
 		s.setActive(false);
 		s.setExpirer(false);
 		ur.save(s);
+		DemandeAbonnement demande = new DemandeAbonnement(1,"waiting","demande d`abonnement de "+" "+s.getMail(),s);
+		demande.toString();
+		demande.setCat("Abonnement");
+		dr.save(demande);
 		return "redirect:/accueil";
 	}
 	

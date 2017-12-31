@@ -25,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.dao.DemandeRepository;
 import com.example.dao.MediaRepository;
 import com.example.dao.UserRepository;
+import com.example.entity.Demande;
 import com.example.entity.Media;
 import com.example.entity.User;
 
@@ -39,6 +41,8 @@ public class EmployeController{
 	UserRepository ur;
 	@Autowired
 	MediaRepository mr;
+	@Autowired
+	DemandeRepository dr;
 	
 	@Value("${dir.images}")
 	private String imageDir;
@@ -50,6 +54,16 @@ public class EmployeController{
 		List<User> users = ur.chercherClient("%"+mc+"%");
 		model.addAttribute("users",users);
 		return "gestionClient";
+	}
+	
+	@RequestMapping(value="/gestionDemande",method=RequestMethod.GET)
+	public String gererDemande(Model model ){
+		
+		List<Demande> demandes = dr.findAll() ;
+		
+		model.addAttribute("demandes",demandes);
+		
+		return "gestionDemande";
 	}
 	
 	@RequestMapping(value="/gestionMedia",method=RequestMethod.GET)

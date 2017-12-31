@@ -41,18 +41,30 @@ public abstract class Demande implements Serializable{
     private int id;
     private String status;
     private String genre;
+    private String cat;
     
-    @ManyToOne
+
+	public String getCat() {
+		return cat;
+	}
+
+	public void setCat(String cat) {
+		this.cat = cat;
+	}
+
+	@ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
 	public Demande() { super(); }
 
-	public Demande(int id, String status,String genre) {
+	public Demande(int id, String status,String genre,User user) {
 		super();
 		this.id = id;
 		this.status = status;
         this.genre = genre;
+        this.user=user;
+       
 	}
 
 	public int getId() {

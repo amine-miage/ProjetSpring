@@ -37,7 +37,7 @@
                 <div class="panel-body">
                     <h5 class="text-center">
                        MODIFICATION D'UN MEDIA </h5>
-                    <form class="form form-signup" role="form" th:object="${m}" th:action="@{EditMedia}" method="post">
+                    <form class="form form-signup" role="form" th:object="${m}" th:action="@{EditMedia}" enctype = "multipart/form-data"  method="post">
             <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-menu-right white"></span>
@@ -67,7 +67,8 @@
                             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope white"></span>
                             </span>
                             <input type="file" class="form-control" name="picture" placeholder="Photo" />
-                      		<span class="text-danger" th:errors="*{photo}"></span> 
+                      		<span class="text-danger" th:errors="*{photo}"></span>
+                      <img class="img-circle" th:src="@{getPhoto(id=${m.id})}" width="100" height="100"/>
                         </div>
                     </div>
                     <input  class="btn btn-sm btn-primary btn-block" role="button" type="submit" value="MODIFIER" />

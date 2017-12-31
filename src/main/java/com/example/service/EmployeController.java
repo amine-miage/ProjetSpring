@@ -53,9 +53,10 @@ public class EmployeController{
 	}
 	
 	@RequestMapping(value="/gestionMedia",method=RequestMethod.GET)
-	public String gererMedia(Model model ){
+	public String gererMedia(Model model, @RequestParam(name="motCle" , defaultValue="" )String mc){
 		
-		List<Media> medias = mr.findAll();
+		//List<Media> medias = mr.findAll();
+		List<Media> medias = mr.chercherMedia("%"+mc+"%");
 		model.addAttribute("medias",medias);
 		return "gestionMedia";
 	}
@@ -78,7 +79,7 @@ public class EmployeController{
 			
 			return "formMedia";
 	}
-		media.setTags(null);
+	
 		mr.save(media);
 		if(!(file.isEmpty())){
 			media.setPhoto(file.getOriginalFilename());
@@ -109,11 +110,19 @@ public class EmployeController{
 	}
 	
 	@RequestMapping(value = "/EditMedia", method = RequestMethod.POST)
-	public String SaveMedia(Media m , BindingResult br )
-	{
-	
+	public String editMedia(@Valid Media media , BindingResult br, Model model , @RequestParam(name="motCle" , defaultValue="" )String mc,@RequestParam(name="picture") MultipartFile file) throws IllegalStateException, IOException{
+		if ( br.hasErrors()){
+			
+			
+			return "EditFormMedia";
+	}
 		
-		mr.save(m);
+		mr.save(media);
+		if(!(file.isEmpty())){
+			media.setPhoto(file.getOriginalFilename());
+			file.transferTo(new File(imageDir+media.getId()));
+		}
+		//formulaire
 		return "redirect:/gestionMedia";
 	}
 	

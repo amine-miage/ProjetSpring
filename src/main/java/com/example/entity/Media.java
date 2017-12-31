@@ -50,8 +50,7 @@ public class Media implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    @OneToMany(orphanRemoval=true,mappedBy = "media") 
-    private Set<Tag> tags;
+  
 
     
 
@@ -120,16 +119,7 @@ public class Media implements Serializable{
         this.date = date;
     }
 
-    public Set<Tag> getTags() {
-        return tags;
-    }
-    public void setTags(Set<Tag> cles) {
-    	if(this.tags == null) this.tags = cles;
-    	else{
-    		this.tags.clear();
-            this.tags.addAll(cles);
-    	}
-    }
+   
 
     public Categorie getCategorie() {
         return categorie;

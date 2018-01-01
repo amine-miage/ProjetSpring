@@ -162,7 +162,8 @@ public class EmployeController{
 	public String SaveUser(User s , BindingResult br )
 	{
 	
-		s.setRole("client");
+		s.setRole("CLIENT");
+		
 		//s.setActive(false);
 		s.setExpirer(false);
 		ur.save(s);

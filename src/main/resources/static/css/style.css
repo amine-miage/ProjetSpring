@@ -15,6 +15,14 @@
 	margin-left:70%;
 	margin-top:-29%
 }
+
+.imgdemande{
+	margin-left:37%;
+	
+}
+.imgdemande h4{
+	margin-left:3%
+}
 .media{
 	margin-left:7%
 }
@@ -50,6 +58,17 @@
     background-color: #151515;
     border-color: #151515;
     color: #151515;
+}
+.glyphicon-pencil{
+	color:#FF0000
+}
+.glyphicon-trash{color:#DBA901 }
+
+.glyphicon-ok{
+	color: green;
+}
+.glyphicon-remove{
+	color:red;
 }
 .form-control:focus
 {

@@ -48,7 +48,7 @@
 <table class="table table-striped table-bordered">
 	<thead>
 	<tr>
-	<th>ID</th> <th>NOM</th> <th>CATEGORIE</th> <th>IMAGE</th> <th>TAG</th> <th>MODIFIER</th> <th>SUPPRIMER</th>
+	<th>ID</th> <th>NOM</th> <th>CATEGORIE</th> <th>IMAGE</th> <th>MODIFIER</th> <th>SUPPRIMER</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -57,7 +57,7 @@
 	<td th:text="${media.name}"></td>
 	<td th:text="${media.type}"></td>
 	<td><img class="img-circle" th:src="@{getPhoto(id=${media.id})}" width="100" height="100"/></td>
-	<td></td>
+	
 	
 	
 	<td ><a th:href="@{/editerMedia(mediaId=${media.id})}"><span class="glyphicon glyphicon-pencil "></span></a></td>

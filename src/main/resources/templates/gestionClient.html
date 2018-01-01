@@ -45,7 +45,7 @@
 <table class="table table-striped table-bordered">
 	<thead>
 	<tr>
-	<th>ID</th> <th>NOM</th> <th>PRENOM</th> <th>DATE DEBUT</th> <th>EMAIL</th> <th>MODIFIER</th> <th>SUPPRIMER</th> <th>ACTIVATION</th>
+	<th>ID</th> <th>NOM</th> <th>PRENOM</th>  <th>EMAIL</th> <th>MODIFIER</th> <th>SUPPRIMER</th> <th>ACTIVATION</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -53,16 +53,16 @@
 	<td th:text="${client.id}"></td>
 	<td th:text="${client.name}"></td>
 	<td th:text="${client.prenom}"></td>
-	<td th:text="${client.dateDebut}"></td>
+	
 	<td th:text="${client.mail}"></td>
 	
 	<td ><a th:href="@{/editerClient(userId=${client.id})}"><span class="glyphicon glyphicon-pencil "></span></a></td>
-	<td><a th:href="@{/DeleteClient(userId=${client.id})}"><span class="glyphicon glyphicon-trash "></span></a></td>
+	<td><a onclick="return confirm('Voulez vous supprimez ce Client ?')" th:href="@{/DeleteClient(userId=${client.id})}"><span class="glyphicon glyphicon-trash "></span></a></td>
 	<td th:text="${client.active}"></td>
 	</tr>
 	</tbody>
 </table>
-hhhhh<a th:href="@{/gestionDemande}">kiko</a>
+
 
 </div>
 </body>

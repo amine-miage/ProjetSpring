@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,7 @@ public class UserController {
 	@RequestMapping(value = "/inscriptionUser", method = RequestMethod.POST)
 	public String SaveUser(User s) {
 		s.setRole("CLIENT");
+		s.setDateDebut(new Date());
 		s.setActive(false);
 		s.setExpirer(false);
 		ur.save(s);

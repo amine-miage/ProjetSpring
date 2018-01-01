@@ -44,7 +44,7 @@
                     </div>
                 <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-king white"></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-menu-right white"></span>
                             </span>
                             <input type="text" class="form-control" th:field="*{prenom}" placeholder="Prenom" />
                         	<span class="text-danger" th:errors="*{prenom}"></span>
@@ -60,12 +60,17 @@
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-ruble white"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock white"></span></span>
                             <input type="password" class="form-control" th:field="*{password}" placeholder="Password" />
                         <span class="text-danger" th:errors="*{password}"></span>
                         </div>
                     </div>
-                  
+                   <div class="form-group">
+                        <div class="input-group">
+                        <label>s'abonner :    </label>
+                            <input type="checkbox"   />
+                        </div>
+                    </div>
   
    
                     <input  class="btn btn-sm btn-primary btn-block" role="button" type="submit" value="ENREGISTRER" />

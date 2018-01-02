@@ -7,7 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
@@ -15,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -29,6 +33,7 @@ import com.example.dao.DemandeRepository;
 import com.example.dao.MediaRepository;
 import com.example.dao.UserRepository;
 import com.example.entity.Demande;
+import com.example.entity.DemandeEmprunt;
 import com.example.entity.Media;
 import com.example.entity.User;
 
@@ -43,6 +48,7 @@ public class EmployeController{
 	MediaRepository mr;
 	@Autowired
 	DemandeRepository dr;
+	
 	
 	@Value("${dir.images}")
 	private String imageDir;
@@ -169,24 +175,7 @@ public class EmployeController{
 		ur.save(s);
 		return "redirect:/gestionClient";
 	}
-	@RequestMapping(value="/abonnerClient",method=RequestMethod.GET)
-	public String abonnement(Model model , @RequestParam(value="userId")int id){
-		User  u = ur.findById(id);
-		
-		model.addAttribute("u",u);
-		
-		return "abonnement";
-	}
-	@RequestMapping(value = "/abonnementClient", method = RequestMethod.POST)
-	public String abonnementUser(User s , BindingResult br )
-	{
 	
-		
-		//s.setActive(false);
-		
-		ur.updateByAbonnement(s.getAbonement());
-		return "redirect:/gestionClient";
-	}
 	@Transactional
 	@RequestMapping(value="/DeleteClient", method=RequestMethod.GET)
 	public String deleteClient(@RequestParam(value="userId") int id){
@@ -195,4 +184,81 @@ public class EmployeController{
 		
 		return "redirect:/gestionClient";
 	}	
+	@RequestMapping(value = "/acceptDemande" , method= RequestMethod.GET)
+    public String accepteDemande(@RequestParam(value="userID") int id, @RequestParam(value="dmdID") int idDmd) {
+		
+		User user = ur.findById(id);	
+		dr.delete(idDmd);
+		user.setActive(true);
+		user.setAbonement("abonné");
+		ur.save(user);
+		
+		return "redirect:/gestionDemande"; 
+	}
+	
+	@RequestMapping(value = "/acceptEmprunt" , method= RequestMethod.GET)
+    public String acceptEmprunt( @RequestParam(value="dmdID") int idDmd,@RequestParam(value="userID") int id,@RequestParam(value="idMedia") int mediaId) {
+		
+		User user = ur.findById(id);	
+		Media media =mr.findById(mediaId);
+		media.setUser(user);
+		dr.delete(idDmd);
+	   
+		
+		return "redirect:/gestionDemande"; 
+	}
+	@RequestMapping(value = "/refusDemande" , method= RequestMethod.GET)
+    public String refusDemande(@RequestParam(value="dmdID") int idDmd) {
+		
+			
+		dr.delete(idDmd);
+		
+		
+		return "redirect:/gestionDemande"; 
+	}
+	@RequestMapping(value = "/DemandeEmprunt", method = RequestMethod.GET)
+    public String dmdEprunt(@RequestParam(value="idMedia") int mediaId,@RequestParam(value="idEmprunt") int userId) {	
+		User u = ur.findById(userId);
+		Media m = mr.findById(mediaId);
+		DemandeEmprunt demande = new DemandeEmprunt(1,"waiting","demande d`emprunt de "+" "+u.getMail(),u,m);
+		demande.setCat("Emprunt");
+		dr.save(demande);
+		return "redirect:/ConsulterEmprunt";
+		
+		
+	}
+	@RequestMapping(value = "/ConsulterEmprunt" , method= RequestMethod.GET)
+    public String affichageEmprunt
+		
+		(HttpServletRequest httpServletRequest, Model model) throws Exception {
+			List<Media> medias = mr.findAll();
+			model.addAttribute("medias",medias);
+			
+			//model.addAttribute("users",users);
+			HttpSession httpSession = httpServletRequest.getSession();
+			
+			SecurityContext securityContext=(SecurityContext) httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+			
+			String username = securityContext.getAuthentication().getName();
+			
+			User u =ur.findByMail(username);
+			//int iduser=u.getId();
+			
+			Set<Media> liste = mr.findByUser(u);
+			model.addAttribute("u",u);
+			model.addAttribute("liste",liste);
+		
+		
+		
+		return "consulterEmprunt"; 
+	}
+	@RequestMapping(value = "/EmployePage" , method= RequestMethod.GET)
+    public String employePag(){
+		return "EmployePage";
+	}
+	
+	@RequestMapping(value = "/Abonner" , method= RequestMethod.GET)
+    public String Abonner(){
+		return "Abonner";
+	}
 }

@@ -24,8 +24,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.DemandeRepository;
+import com.example.dao.MediaRepository;
 import com.example.dao.UserRepository;
 import com.example.entity.DemandeAbonnement;
+import com.example.entity.DemandeEmprunt;
+import com.example.entity.Media;
 import com.example.entity.User;
 import com.example.metier.UserMetier;
 
@@ -41,6 +44,9 @@ public class UserController {
 	@Autowired
     private UserMetier urr;
 	
+	@Autowired
+    MediaRepository mr;
+
 	@Autowired
     DemandeRepository dr;
 	
@@ -63,5 +69,7 @@ public class UserController {
 		dr.save(demande);
 		return "redirect:/accueil";
 	}
+	
+	
 	
 }

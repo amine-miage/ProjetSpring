@@ -14,8 +14,8 @@ import com.example.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    List<User> findByName(String name);
-    List<User> findByMail(String mail);
+    User findByName(String name);
+    User findByMail(String mail);
     User findById(int id);
     User findByMailAndPassword(String mail, String password);
     List<User> findByRole(String r);

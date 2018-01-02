@@ -23,7 +23,7 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right ">
-					
+					<li ><a   th:href="@{/EmployePage}"><strong>Gestions</strong></a></li>
 					<li ><a   th:href="@{/accueil}"><strong>Accueil</strong></a></li>
 					<li> <a th:href="@{/logout}"><strong>Deconnexion</strong></a> </li>
 				</ul>
@@ -38,6 +38,7 @@
 <br/>
 <br/>
 <br/>
+<h3>Gestion des abonnements</h3>
 <table class="table table-striped table-bordered">
 	<thead>
 	<tr>
@@ -45,19 +46,41 @@
 	</tr>
 	</thead>
 	<tbody>
-	<tr th:each="dmd:${demandes}">
+	<tr th:each="dmd:${demandes}" th:if="${dmd.cat} == 'Abonnement'">
 	<td th:text="${dmd.cat}"></td>
 	 <td th:text="${dmd.genre}"></td>
 	<td th:text="${dmd.status}"></td>
 	
 	
-	<td ><a ><span class="glyphicon glyphicon-ok "></span></a></td>
-	<td><a ><span class="glyphicon glyphicon-remove "></span></a></td>
+	<td ><a th:href="@{/acceptDemande(userID=${dmd.user.id},dmdID=${dmd.id})}" ><span class="glyphicon glyphicon-ok "></span></a></td>
+	<td><a th:href="@{/refusDemande(dmdID=${dmd.id})}" ><span class="glyphicon glyphicon-remove "></span></a></td>
 	
 	</tr>
 	</tbody>
 </table>
+<br/>
+<br/>
 
+<h3>Gestion des emprunts</h3>
+<table class="table table-striped table-bordered">
+	<thead>
+	<tr>
+	<th>TYPE</th> <th>GENRE</th> <th>STATUT</th> <th>ACCEPTER</th> <th>REFUSER</th> 
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="dmd:${demandes}" th:if="${dmd.cat} == 'Emprunt'">
+	<td th:text="${dmd.cat}"></td>
+	 <td th:text="${dmd.genre}"></td>
+	<td th:text="${dmd.status}"></td>
+	
+	
+	<td ><a th:href="@{/acceptEmprunt(userID=${dmd.user.id},dmdID=${dmd.id},idMedia=${dmd.media.id})}" ><span class="glyphicon glyphicon-ok "></span></a></td>
+	<td><a th:href="@{/refusDemande(dmdID=${dmd.id})}" ><span class="glyphicon glyphicon-remove "></span></a></td>
+	
+	</tr>
+	</tbody>
+</table>
 
 
 </div>

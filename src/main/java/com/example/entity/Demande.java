@@ -55,8 +55,20 @@ public abstract class Demande implements Serializable{
 	@ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
+	
+	@ManyToOne
+    @JoinColumn(name = "Media_id")
+    private Media media;
+	
 	public Demande() { super(); }
+
+	public Media getMedia() {
+		return media;
+	}
+
+	public void setMedia(Media media) {
+		this.media = media;
+	}
 
 	public Demande(int id, String status,String genre,User user) {
 		super();
@@ -66,6 +78,16 @@ public abstract class Demande implements Serializable{
         this.user=user;
        
 	}
+	public Demande(int id, String status,String genre,User user,Media media) {
+		super();
+		this.id = id;
+		this.status = status;
+        this.genre = genre;
+        this.user=user;
+        this.media=media;
+       
+	}
+
 
 	public int getId() {
 		return id;
@@ -97,7 +119,7 @@ public abstract class Demande implements Serializable{
         this.genre = genre;
     }
     
-    public abstract void accepted(DemandeMetier dm);
+    
 
     @Override
 	public String toString() {

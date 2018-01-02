@@ -26,8 +26,8 @@
 				<ul class="nav navbar-nav navbar-right ">
 					
 					<li ><a   th:href="@{/accueil}"><strong>Accueil</strong></a></li>
-					<li> <a ><strong>Emprunt</strong></a> </li>
-					<li> <a ><strong>Abonnement</strong></a> </li>
+					<li> <a th:href="@{/ConsulterEmprunt}"><strong>Emprunt</strong></a> </li>
+					<li> <a th:href="@{/Abonner}" ><strong>Abonnement</strong></a> </li>
 					<li> <a th:href="@{/logout}"><strong>Deconnexion</strong></a> </li>
 					
 				</ul>
@@ -64,13 +64,15 @@
 		<div class="col-lg-12">
 		<h3>Media Disponible</h3>
 		</div>
-		<div class="col-lg-3 col-md-4 col-sm-6"  th:each="media:${medias}"  >
+		Hello <div th:text="${u.name}"></div>
+		<div class="col-lg-3 col-md-4 col-sm-6"  th:each="media:${medias}"   >
 		<h5 th:text="${media.name}"></h5>
 		<div class="thumbnails">
 		
 		<img th:src="@{getPhoto(id=${media.id})}" width="75%" height="75%" />
 		<div class="caption">
-          <a> Emprunter</a>
+		
+          <a  onclick="return alert('Votre demande a été envoyé')" th:href="@{/DemandeEmprunt(idEmprunt=${u.id},idMedia=${media.id})}"> Emprunter</a>
         </div>
 		</div>
 		</div>

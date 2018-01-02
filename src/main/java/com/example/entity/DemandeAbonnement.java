@@ -23,10 +23,7 @@ public class DemandeAbonnement extends Demande{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void accepted(DemandeMetier dm) {
-		dm.abonnement(super.getUser());
-	}
+
 	
 	@Override
 	public String toString() {

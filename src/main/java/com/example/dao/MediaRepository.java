@@ -19,6 +19,7 @@ public interface MediaRepository extends JpaRepository<Media, Integer>{
 
     public Set<Media> findByName(String name);
     Media findById(int idMedia);
+    public Set<Media> findByUser(User u);
     void deleteById(int idMedia);
    // public Set<Media> findByTagsName(String name);
     //public Set<Media> findByTagsNameIn(Collection<String> names);

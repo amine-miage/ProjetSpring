@@ -18,27 +18,19 @@ public class DemandeEmprunt extends Demande{
 	 * 
 	 */
 	private static final long serialVersionUID = -1523222928485311053L;
-		private Date dateEmprunt;
-		private int IdMedia;
+		
 
-	    public DemandeEmprunt(int id, String status, String genre, Date dateEmprunt,int IdMedia) {
-	      //  super(id, status,genre);
-	        this.dateEmprunt = dateEmprunt;
-	        this.IdMedia=IdMedia;
+		public DemandeEmprunt() {};
+	    public DemandeEmprunt(int id, String status, String genre,User user,Media media) {
+	       super(id, status,genre,user,media);
 	    }
-
-		@Override
-		public void accepted(DemandeMetier dm) {
-			dm.Emprunt(super.getUser(),IdMedia);
-			
-		}
 		
 		
 		
 		
 		@Override
 		public String toString() {
-			return "DemandeInscription ["+super.toString()+" ,raison=" + dateEmprunt + "]";
+			return "DemandeInscription ["+super.toString()+" ,raison="   ;
 		}
 		
 		

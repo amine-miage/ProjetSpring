@@ -50,6 +50,7 @@ public class Media implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
+    private String emprunt;
   
 
     

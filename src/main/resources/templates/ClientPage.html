@@ -17,7 +17,13 @@
 
 	</head>
 <body >
-<nav class="navbar navbar-inverse">
+
+<div th:switch="${u.abonement}">
+			<div th:case="null">non abo</div>
+			
+		
+<div th:case="abonné">
+<nav  class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Médiathèque</a>
@@ -59,12 +65,16 @@
 
 </table>
 -->
+
 <div class="container">
 	<div class="row ">
+	 <button class="btn">
+	 <span class="logoicon"><i class="fa fa-user"></i></span>
+     <span class="name" th:text="${u.name}"> </span>
+                      </button>
 		<div class="col-lg-12">
 		<h3>Media Disponible</h3>
 		</div>
-		Hello <div th:text="${u.name}"></div>
 		<div class="col-lg-3 col-md-4 col-sm-6"  th:each="media:${medias}"   >
 		<h5 th:text="${media.name}"></h5>
 		<div class="thumbnails">
@@ -78,7 +88,8 @@
 		</div>
 </div>
 </div>
-
+</div>
+</div>
 
             
 

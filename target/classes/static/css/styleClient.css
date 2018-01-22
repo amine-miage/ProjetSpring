@@ -2,7 +2,11 @@
 
 
 
-
+.btn{
+	margin-left:90%;
+	width: 163px;
+    height: 68px;
+}
 a {
 color: #000;
 text-decoration: none;

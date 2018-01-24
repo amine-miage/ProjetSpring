@@ -76,5 +76,10 @@
 }
 .form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
 
-
+.btn1{
+	margin-left:85%;
+	width: 163px;
+    height: 68px;
+    
+}
 

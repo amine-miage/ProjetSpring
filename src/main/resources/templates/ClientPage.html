@@ -16,10 +16,22 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 
 	</head>
-<body >
+<body  >
 
 <div th:switch="${u.abonement}">
-			<div th:case="null">non abo</div>
+			<div th:case="null">
+			<div class="container">
+	<div class="row text-center">
+        <div class="col-sm-6 col-sm-offset-3">
+        <br/><br/> <h2 style="color:red">Vous n'êtes pas parmis les abonnés </h2>
+        
+        <a th:href="@{/login}" class="btn btn-danger">     Retour      </a>
+    <br/><br/>
+        </div>
+        
+	</div>
+</div>
+			</div>
 			
 		
 <div th:case="abonné">
@@ -68,30 +80,39 @@
 
 <div class="container">
 	<div class="row ">
-	 <button class="btn">
+	 <button class="btn2">
 	 <span class="logoicon"><i class="fa fa-user"></i></span>
      <span class="name" th:text="${u.name}"> </span>
                       </button>
 		<div class="col-lg-12">
-		<h3>Media Disponible</h3>
+		<div class="card">
+  <div class="content">
+    <div class="front">
+     Medias
+    </div>
+    <div class="back">
+      Disponibles!
+    </div>
+  </div>
+</div>
 		</div>
-		<div class="col-lg-3 col-md-4 col-sm-6"  th:each="media:${medias}"   >
-		<h5 th:text="${media.name}"></h5>
-		<div class="thumbnails">
-		
-		<img th:src="@{getPhoto(id=${media.id})}" width="75%" height="75%" />
-		<div class="caption">
-		
-          <a  onclick="return alert('Votre demande a été envoyé')" th:href="@{/DemandeEmprunt(idEmprunt=${u.id},idMedia=${media.id})}"> Emprunter</a>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div class="col-md-3" th:each="media:${medias}">
+            <div class="product-item">
+              <div class="pi-img-wrapper">
+                <img th:src="@{getPhoto(id=${media.id})}"  class="img-responsive img-top-round" alt="Berry Lace Dress"/>
+                
+              </div>
+              <br/>
+              <span th:text="${media.name}"></span>
+        
+              <a  class="btn add2cart"  onclick="return alert('Votre demande a été envoyé')" th:href="@{/DemandeEmprunt(idEmprunt=${u.id},idMedia=${media.id})}"> Emprunter</a>
+              <div class="sticker sticker-new"></div> 
+            </div>
         </div>
-		</div>
-		</div>
-</div>
-</div>
-</div>
-</div>
-
-            
-
+        </div></div></div></div>
 </body>
 </html>
